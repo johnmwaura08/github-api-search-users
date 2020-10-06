@@ -1,9 +1,18 @@
 import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+// import { useAuth0 } from '@auth0/auth0-react';
 import styled from 'styled-components';
 import loginImg from '../images/login-img.svg';
+import developer from '../images/developer.gif'
+import codergif from '../images/codergif.gif'
 const Login = () => {
-  return <h2>login page</h2>;
+  return <Wrapper>
+    <div className="container">
+      <img src={codergif} alt="github user" />
+      <h1>github member</h1>
+      <button className="btn">Login</button>
+    </div>
+
+  </Wrapper>;
 };
 const Wrapper = styled.section`
   min-height: 100vh;
@@ -22,3 +31,5 @@ const Wrapper = styled.section`
   }
 `;
 export default Login;
+
+// background-color: #7D97FC
