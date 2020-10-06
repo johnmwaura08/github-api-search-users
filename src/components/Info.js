@@ -5,9 +5,10 @@ import { GoRepo, GoGist } from 'react-icons/go';
 import { FiUsers, FiUserPlus } from 'react-icons/fi';
 
 const UserInfo = () => {
-  return <h2>user info component</h2>;
+  const data = React.useContext(GithubContext)
+  // trying to see if i have access in the value from context( i have a simple hello)
+  return <h2>user info component : {data} </h2>; // yay shows hello on screen so i can now start setting up the functionality
 };
-
 const Wrapper = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
