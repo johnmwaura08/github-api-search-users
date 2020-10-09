@@ -3,10 +3,21 @@ import { GithubContext } from '../context/context';
 import styled from 'styled-components';
 import { GoRepo, GoGist } from 'react-icons/go';
 import { FiUsers, FiUserPlus } from 'react-icons/fi';
+import _ from 'lodash';
+
 
 const UserInfo = () => {
   const { githubUser } = React.useContext(GithubContext);
-  const { public_repos, public_gists, followers, following } = githubUser;
+  const { public_repos, followers, following } = githubUser;
+  const { events } = React.useContext(GithubContext);
+
+  const pushEvents = events.filter(d => d.type === "PushEvent")
+  const parsed = pushEvents.map(pushEvent => {
+    return pushEvent.payload.commits.map(commit => commit)
+  })
+  const flattened = _.flatten(parsed);
+  const monthlyCommits = flattened.length;
+  console.log(monthlyCommits);
 
   const items = [
     {
@@ -33,8 +44,8 @@ const UserInfo = () => {
     {
       id: 4,
       icon: <GoGist className="icon" />,
-      label: 'gists',
-      value: public_gists,
+      label: 'Monthly Commits',
+      value: monthlyCommits,
       color: 'yellow'
     },
   ]
@@ -42,13 +53,13 @@ const UserInfo = () => {
   return <section className="section">
     <Wrapper className="section-center">
       {items.map((item) => {
-          return <Item key={item.id} {...item} />  // destructured the params in the component using spread operator 
+        return <Item key={item.id} {...item} />  // destructured the params in the component using spread operator 
       })}
     </Wrapper>
   </section>
 };
 
-const Item = ({icon, label,value, color}) => {
+const Item = ({ icon, label, value, color }) => {
   return <article className="item">
     <span className={color}>{icon}</span>
     <div>
