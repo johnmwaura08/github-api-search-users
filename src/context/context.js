@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import mockUser from './mockData.js/mockUser';
 import mockRepos from './mockData.js/mockRepos';
 import mockFollowers from './mockData.js/mockFollowers';
+import mockEvents from './mockData.js/mockEvents'
 import axios from 'axios';
 
 const rootUrl = 'https://api.github.com';
@@ -16,6 +17,7 @@ const GithubProvider = ({ children }) => {
     const [githubUser, setGithubUser] = useState(mockUser);
     const [repos, setRepos] = useState(mockRepos);
     const [followers, setFollowers] = useState(mockFollowers);
+    const [ events, setEvents] = useState(mockEvents)
     //request loading
     const [requests, setRequests] = useState(0);
     const [loading, setIsLoading] = useState(false)
@@ -42,7 +44,7 @@ const GithubProvider = ({ children }) => {
 
     useEffect(checkRequests, [])
 
-    return (<GithubContext.Provider value={{ githubUser, repos, followers, requests, error }}>
+    return (<GithubContext.Provider value={{ githubUser, repos, followers, requests, error,events }}>
         {children}
     </GithubContext.Provider>
     );
