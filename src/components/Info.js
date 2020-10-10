@@ -8,7 +8,7 @@ import _ from 'lodash';
 
 const UserInfo = () => {
   const { githubUser } = React.useContext(GithubContext);
-  const { public_repos, followers, following } = githubUser;
+  const { public_repos, followers, following ,public_gists} = githubUser;
   const { events } = React.useContext(GithubContext);
 
   const pushEvents = events.filter(d => d.type === "PushEvent")
@@ -46,6 +46,13 @@ const UserInfo = () => {
       icon: <GoGist className="icon" />,
       label: 'Monthly Commits',
       value: monthlyCommits,
+      color: 'yellow'
+    },
+    {
+      id: 4,
+      icon: <GoGist className="icon" />,
+      label: 'Gists',
+      value: public_gists,
       color: 'yellow'
     },
   ]
