@@ -21,8 +21,6 @@ const Dashboard = () => {
       <Info />
       <User />
       <Repos />
-      <Events />
-   
     </React.Fragment>
   );
 };
