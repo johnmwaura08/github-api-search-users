@@ -31,7 +31,7 @@ const ChartComponent = ({data}) => {
       // Chart Configuration
       chart: {
         //Set the chart caption
-        caption: "First 5 Repositories",
+        caption: "Portfolio Repositories",
      
         // //Set the chart subcaption
         // subCaption: "Number of Repos",
