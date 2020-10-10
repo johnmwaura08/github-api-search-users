@@ -11,8 +11,8 @@ import FusionCharts from "fusioncharts";
 // Include the chart type
 import Column2D from "fusioncharts/fusioncharts.charts";
 
-// Include the theme as fusion
-import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+// Include the theme as zune
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.candy";
 
 // Adding the chart and theme as dependency to the core fusioncharts
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
@@ -23,24 +23,30 @@ ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
 const ChartComponent = ({data}) => {
   const chartConfigs = {
-    type: "bar3d", // The chart type
-    width: "400", // Width of the chart
+    type: "column3d", // The chart type
+    width: "700", // Width of the chart
     height: "400", // Height of the chart
     dataFormat: "json", // Data type
     dataSource: {
       // Chart Configuration
       chart: {
         //Set the chart caption
-        caption: "Countries With Most Oil Reserves [2017-18]",
-        //Set the chart subcaption
-        subCaption: "In MMbbl = One Million barrels",
-        //Set the x-axis name
-        xAxisName: "Country",
-        //Set the y-axis name
-        yAxisName: "Reserves (MMbbl)",
-        numberSuffix: "K",
+        caption: "Largest Repositories",
+        xAxisName: "name of repo",
+        yAxisName: "size of repo",
+        
+        // //Set the chart subcaption
+        // subCaption: "In MMbbl = One Million barrels",
+        // //Set the x-axis name
+        // xAxisName: "Country",
+        // //Set the y-axis name
+        // yAxisName: "Reserves (MMbbl)",
+        // numberSuffix: "K",
         //Set the theme for your chart
-        theme: "fusion"
+        // theme:"candy",
+        decimals: 0,
+        // pieRadius:'50%',
+
       },
       // Chart Data
       data
@@ -55,3 +61,4 @@ const ChartComponent = ({data}) => {
 // STEP 4 - Creating the DOM element to pass the react-fusioncharts component
 
 export default ChartComponent;
+

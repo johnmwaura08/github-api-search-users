@@ -11,8 +11,8 @@ import FusionCharts from "fusioncharts";
 // Include the chart type
 import Column2D from "fusioncharts/fusioncharts.charts";
 
-// Include the theme as candy
-import FusionTheme from "fusioncharts/themes/fusioncharts.theme.candy";
+// Include the theme as fusion
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 
 // Adding the chart and theme as dependency to the core fusioncharts
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
@@ -23,26 +23,28 @@ ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
 const ChartComponent = ({data}) => {
   const chartConfigs = {
-    type: "bar3d", // The chart type
-    width: "700", // Width of the chart
+    type: "doughnut2d", // The chart type
+    width: "100%", // Width of the chart
     height: "400", // Height of the chart
     dataFormat: "json", // Data type
     dataSource: {
       // Chart Configuration
       chart: {
         //Set the chart caption
-        caption: "Portfolio Repositories",
+        caption: "Stats Per Language",
      
         // //Set the chart subcaption
-        // subCaption: "Number of Repos",
+        // subCaption: "In MMbbl = One Million barrels",
         // //Set the x-axis name
-        xAxisName: "name of repo",
+        // xAxisName: "Country",
         // //Set the y-axis name
-        // yAxisName: "size of repo",
+        // yAxisName: "Reserves (MMbbl)",
         // numberSuffix: "K",
         //Set the theme for your chart
-        theme: "candy",
-        
+        theme: "fusion",
+        decimals: 0,
+        doughnutRadius:'35%',
+        showPercentValues : 0
 
       },
       // Chart Data

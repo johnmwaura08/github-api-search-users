@@ -11,8 +11,8 @@ import FusionCharts from "fusioncharts";
 // Include the chart type
 import Column2D from "fusioncharts/fusioncharts.charts";
 
-// Include the theme as zune
-import FusionTheme from "fusioncharts/themes/fusioncharts.theme.umber";
+// Include the theme as fusion
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 
 // Adding the chart and theme as dependency to the core fusioncharts
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
@@ -23,7 +23,7 @@ ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
 const ChartComponent = ({data}) => {
   const chartConfigs = {
-    type: "column3d", // The chart type
+    type: "bar3d", // The chart type
     width: "700", // Width of the chart
     height: "400", // Height of the chart
     dataFormat: "json", // Data type
@@ -31,21 +31,18 @@ const ChartComponent = ({data}) => {
       // Chart Configuration
       chart: {
         //Set the chart caption
-        caption: "Largest Repositories",
-        xAxisName: "name of repo",
-        yAxisName: "size of repo",
-        
+        caption: "Portfolio Repositories",
+     
         // //Set the chart subcaption
-        // subCaption: "In MMbbl = One Million barrels",
+        // subCaption: "Number of Repos",
         // //Set the x-axis name
-        // xAxisName: "Country",
+        xAxisName: "name of repo",
         // //Set the y-axis name
-        // yAxisName: "Reserves (MMbbl)",
+        // yAxisName: "size of repo",
         // numberSuffix: "K",
         //Set the theme for your chart
-        theme:"umber",
-        decimals: 0,
-        // pieRadius:'50%',
+        theme: "fusion",
+        
 
       },
       // Chart Data
