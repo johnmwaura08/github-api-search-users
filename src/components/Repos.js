@@ -7,7 +7,7 @@ const Repos = () => {
 
   const { repos } = React.useContext(GithubContext);
 
-  const firstReposData = repos.slice(0, 5).map((repo) => {
+  const firstReposData = repos.slice(0, 10).map((repo) => {
     const { name } = repo;
     return (
       {
@@ -83,8 +83,8 @@ const Repos = () => {
       <Wrapper className="section-center">
         {/* <ExampleChart data={chartData} /> */}
         <Pie3D data={mostUsed} />
+        <Column3D data={repoSizeData} />  
         <Doughnut2D data={mostPopular} />
-        <Column3D data={repoSizeData} />
         <Bar3D data={firstReposData} />
       </Wrapper>
     </section>
