@@ -1,8 +1,6 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import styled from 'styled-components';
-import loginImg from '../images/login-img.svg';
-import developer from '../images/developer.gif'
 import codergif from '../images/codergif.gif'
 const Login = () => {
   const {loginWithRedirect} = useAuth0();
@@ -12,7 +10,6 @@ const Login = () => {
       <h1>github member</h1>
       <button className="btn" onClick={loginWithRedirect}>Sign In</button>
     </div>
-
   </Wrapper>;
 };
 const Wrapper = styled.section`
@@ -32,5 +29,3 @@ const Wrapper = styled.section`
   }
 `;
 export default Login;
-
-// background-color: #7D97FC
