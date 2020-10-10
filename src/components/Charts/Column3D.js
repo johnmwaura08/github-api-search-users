@@ -24,14 +24,14 @@ ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 const ChartComponent = ({data}) => {
   const chartConfigs = {
     type: "column3d", // The chart type
-    width: "500", // Width of the chart
+    width: "700", // Width of the chart
     height: "400", // Height of the chart
     dataFormat: "json", // Data type
     dataSource: {
       // Chart Configuration
       chart: {
         //Set the chart caption
-        caption: "Largest Repos",
+        caption: "Largest Repositories",
         xAxisName: "name of repo",
         yAxisName: "size of repo",
         
