@@ -3,15 +3,16 @@ import './App.css';
 import Dashboard from '../src/pages/Dashboard';
 import Login from '../src/pages/Login';
 import Error from '../src/pages/Error';
+import PrivateRoute from '../src/pages/PrivateRoute';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 function App() {
   return (
     <div>
       <Router>
         <Switch>
-          <Route path='/' exact={true}>
+          <PrivateRoute path='/' exact={true}>
             <Dashboard></Dashboard>
-          </Route>
+          </PrivateRoute>
           <Route path='/login'>
             <Login></Login>
           </Route>
