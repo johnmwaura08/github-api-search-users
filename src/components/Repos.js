@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { GithubContext } from '../context/context';
-import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D, TestChart } from './Charts';
+import ForkedBar3D from './Charts/ForkedBar3D';
+import LanguageDoughnut2D from './Charts/LanguageDoughnut2D';
+import LanguagesPie3D from './Charts/LanguagesPie3D';
+import LargestRepColumn3D from './Charts/LargestRepColumn3D';
+import PortfolioBar3D from './Charts/PortfolioBar3D';
+import StarColumn3D from './Charts/StarColumn3D';
 
 const Repos = () => {
 
@@ -21,14 +26,14 @@ const Repos = () => {
     const { size } = repos;
     return b.size - a.size
   }).map((repo, i) => {
-      const { name, size } = repo;
-      return (
-        {
-          label: name,
-          value: size
-        }
-      )
-    }).slice(0, 5)
+    const { name, size } = repo;
+    return (
+      {
+        label: name,
+        value: size
+      }
+    )
+  }).slice(0, 5)
 
   let languages = repos.reduce((total, item) => {
     let { language, stargazers_count } = item;
@@ -55,37 +60,42 @@ const Repos = () => {
     return { ...item, value: item.stars }
   }).slice(0, 5)
 
-
-  const chartData = [
-    // {
-    //   label: newChartData[0].label,
-    //   value: newChartData[0].value
-    // },
-    {
-      label: "CSS",
-      value: 1
-
+  //stars , forks
+  let { stars, forks } = repos.reduce(
+    (total, item) => {
+      const { stargazers_count, name, forks } = item;
+      total.stars[stargazers_count] = { label: name, value: stargazers_count };
+      total.forks[forks] = { label: name, value: forks };
+      return total;
     },
     {
-      label: "JAVASCRIPT",
-      value: 1
-
-    },
-    {
-      label: "TYPESCRIPT",
-      value: 1
-
+      stars: {},
+      forks: {},
     }
-  ];
+  );
+
+  stars = Object.values(stars).slice(-5).reverse();
+  forks = Object.values(forks).slice(-5).reverse();
+  console.log(stars);
+
   return (
 
     <section className="section">
       <Wrapper className="section-center">
         {/* <ExampleChart data={chartData} /> */}
-        <Pie3D data={mostUsed} />
-        <Column3D data={repoSizeData} />  
-        <Doughnut2D data={mostPopular} />
-        <Bar3D data={firstReposData} />
+        <LanguagesPie3D data={mostUsed} />
+        <LanguageDoughnut2D data={mostPopular} />
+
+        { stars.length > 1 && 
+        <StarColumn3D data={stars} />
+        }
+        {
+          forks.length > 1 &&
+        <ForkedBar3D data={forks} />
+        }
+        <LargestRepColumn3D data={repoSizeData} />
+        <PortfolioBar3D data={firstReposData} />
+
       </Wrapper>
     </section>
   )
